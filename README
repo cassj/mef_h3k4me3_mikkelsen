@@ -1,0 +1,62 @@
+H3K9Me3 ChIPseq in Mouse Embryonic Fibroblasts
+From Mikkelsen '07 (|doi:10.1038/nature06008) 
+
+Methods:
+
+MEFs (genotype 129SvJae X C57Bl/6; male; E13.5; passages 4-6) were grown in DMEM with 10% fetal bovine serum and penicillin / streptomycin at 37degreesC, 5%CO2
+
+ChIPed using Upstate protocol (www.upstate.com):
+Chromatin fragmented to 200-700bases. 
+H3K4me3 antibody Abcam 8580
+Protein A-Sepharose
+
+DNA fragments blunt-ended with T4 DNApol, phosphorylated using T4 polynucleotide kinase and a single A was added to 3' with Klenow. 
+Double-stranded Solexa adaptors (75bp with a T overhang) ligated to fragments and products between 275 and 700bp were gel purified on 2% agarose and subjected to 18 PCR cycles.
+Sequencing on Illumina / Solexa. Reagents from Solexa Cluster Amplification kits and sequences processed as per manufacturers instructions.
+
+Illumina / Solexa sequencing with 25-50 base reads.
+Obtained an average of 10 million successful reads consisting of the terminal 27-36 bases of each fragment.
+
+Expression Data
+for ESC, NSC & MEF using Affy Mouse430.2.
+
+
+Data:
+
+www.broad.mit.edu/seq_platform/chip/
+Data on GEO: GSE12241
+MEF H3K4me3 GSM307608
+Raw Data from ftp://ftp.ncbi.nlm.nih.gov/sra/static/SRX001%2FSRX001933
+
+
+Notes from paper:
+
+* MEFs are multipotent ex vivo. They have been shown to differentiate into adipocytes, chondrocytes, osteoblast-like cells.
+
+* H3K4me3 is catalysed by trithorax-group (trxG) proteins and is associated with activation.
+
+* Virtually all high CpG promoters in ESCs are associated with significant H3k4me3 enrichment, typically in a punctate interval of 1-2Kb
+* Strong correlation between gene expression and enrichment of H3k4me3 
+* Not all promoters associated with H3K4me3 are active
+* around 22% of high CpGs are bivalent for H3k4me3 and H3K27me3 and these genes tend to show low activity
+
+* Most HPCs marked with H3K4me3 in ESCs retain this mark in NPCs and MEFs (unsurprising as HPCs tend to be housekeeping genes)
+* Around 4% gain H3K27me3 in MEFs, including Sox2
+* The majority of bivalent HPCs in ESCs resolve to a single mark in committed cells.
+
+* low CpG promoters show a different pattern.
+* Small number of LCPs have significant H3K4me3 in ESC and almost none have H3K27me3
+* Most lose the H3K4me3 mark in NSC and MEF, although a small number gain it
+* In all 3 cell types, expression level of associated genes correlates strongly with presence or absence of H3K4me3
+* Genes with H3K4me3 LCPs are closely related to tissue function. In MEFs these include extracellular matrix components and GFs
+
+* Genes with alternate promoters may have multiple distinct chromatin state. 
+
+* Co-modification with H3K4me3 and H3K9me3 is often indicative of imprinted loci 
+
+
+
+
+
+
+
