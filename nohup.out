@@ -1,0 +1,604 @@
+  * executing `run_bowtie'
+    triggering before callbacks for `run_bowtie'
+  * executing `EC2:start'
+I, [2010-10-18T11:34:39.850780 #16673]  INFO -- : New RightAws::Ec2 using shared connections mode
+I, [2010-10-18T11:34:39.853257 #16673]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+W, [2010-10-18T11:34:39.984582 #16673]  WARN -- : ##### RightAws::Ec2 returned an error: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?>
+<Response><Errors><Error><Code>InvalidGroup.Duplicate</Code><Message>The security group 'CaTPAWS_mef_h3k4me3_mikkelsen_mef' already exists</Message></Error></Errors><RequestID>8084c7ec-675e-4056-8ba9-aa1ece7bae71</RequestID></Response> #####
+W, [2010-10-18T11:34:39.984694 #16673]  WARN -- : ##### RightAws::Ec2 request: https://eu-west-1.ec2.amazonaws.com:443/?AWSAccessKeyId=16F5AHH5HWR243WSNMR2&Action=CreateSecurityGroup&GroupDescription=A%20group%20created%20by%20CaTPAWS%20%28http%3A%2F%2Fgithub.com%2Fcassj%2Fcatpaws%29&GroupName=CaTPAWS_mef_h3k4me3_mikkelsen_mef&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2010-10-18T10%3A34%3A39.000Z&Version=2010-08-31&Signature=iTj%2FaEvpitYcWJVwlYAc2qXvEUbQyYQToPkPCipRTlk%3D ####
+    triggering after callbacks for `EC2:start'
+  * executing `EC2:setup'
+  * executing "sudo -p 'sudo password: ' mkdir -p /mnt/work"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "sudo -p 'sudo password: ' chown -R ubuntu /mnt/work"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K4me3_ChIPSeq/*fastq"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K27me3_ChIPSeq/*fastq"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 7901080
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 5021826
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 63.56
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 2879254
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 36.44
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 5021826
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] alignments to
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 1
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] output stream(s)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 7939350
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 3075101
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 38.73
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 4864249 (61.27%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported 3075101 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006836.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006836.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed: 1405813
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment: 1223945 (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 87.06%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align: 181868 (12.94%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported 1223945 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006837.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006837.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 8522236
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 3532864
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 41.45
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 4989372
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 58.55
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported 3532864 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006838.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006838.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 8271953
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 4215014
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 50.96
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 4056939
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] (49.04%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported 4215014 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006797.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006797.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads processed: 889842
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment: 740211 (
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 83.18%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] # reads that failed to align: 149631 (16.82%)
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Reported 740211 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.sam"
+    servers: ["ec2-79-125-47-174.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Error while flushing and closing output
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] Command: /mnt/work/bowtie-0.12.7/bowtie --sam --al
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] --best --solexa-quals -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.fastq
+*** [err :: ec2-79-125-47-174.eu-west-1.compute.amazonaws.com] 
+    command finished
+failed: "sh -c '/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.sam'" on ec2-79-125-47-174.eu-west-1.compute.amazonaws.com
+  * executing `run_bowtie'
+    triggering before callbacks for `run_bowtie'
+  * executing `EC2:start'
+I, [2010-10-18T15:02:50.492766 #26496]  INFO -- : New RightAws::Ec2 using shared connections mode
+I, [2010-10-18T15:02:50.495020 #26496]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+W, [2010-10-18T15:02:50.623303 #26496]  WARN -- : ##### RightAws::Ec2 returned an error: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?>
+<Response><Errors><Error><Code>InvalidGroup.Duplicate</Code><Message>The security group 'CaTPAWS_mef_h3k4me3_mikkelsen_mef' already exists</Message></Error></Errors><RequestID>6f24b066-150c-43a6-a4ce-a976d0824e3a</RequestID></Response> #####
+W, [2010-10-18T15:02:50.623565 #26496]  WARN -- : ##### RightAws::Ec2 request: https://eu-west-1.ec2.amazonaws.com:443/?AWSAccessKeyId=16F5AHH5HWR243WSNMR2&Action=CreateSecurityGroup&GroupDescription=A%20group%20created%20by%20CaTPAWS%20%28http%3A%2F%2Fgithub.com%2Fcassj%2Fcatpaws%29&GroupName=CaTPAWS_mef_h3k4me3_mikkelsen_mef&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2010-10-18T14%3A02%3A50.000Z&Version=2010-08-31&Signature=3Y43XNjGdUcme2pW58c%2B7eq7ElFk2aQj0M3v%2BCvYWMg%3D ####
+    triggering after callbacks for `EC2:start'
+  * executing `EC2:setup'
+  * executing "sudo -p 'sudo password: ' mkdir -p /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "sudo -p 'sudo password: ' chown -R ubuntu /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K4me3_ChIPSeq/*fastq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K27me3_ChIPSeq/*fastq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 7901080
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 5021826
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 63.56
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 2879254
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (36.44%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported 5021826 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 7939350
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 3075101
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 38.73
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align: 4864249 (61.27%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported 3075101 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006836.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006836.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed: 1405813
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment: 1223945 (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 87.06%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align: 181868 (12.94%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported 1223945 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006837.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006837.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 8522236
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 3532864
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 41.45
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4989372
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 58.55
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 3532864
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] alignments to
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 1
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] output stream(s)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006838.fastq > /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006838.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 8271953
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4215014
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 50.96
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4056939
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 49.04
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4215014
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] alignments to
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 1
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] output stream(s)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006797.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006797.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed: 889842
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment: 740211 (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 83.18%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align: 149631 (16.82%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported 740211 alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006822.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 5790272
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4473012
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 77.25
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 1317260
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 22.75
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4473012
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] alignments to
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 1
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] output stream(s)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006823.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006823.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 6635901
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 3947810
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 59.49
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 2688091
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 40.51
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 3947810
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] alignments to
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 1
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] output stream(s)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006824.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006824.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 8581724
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4038300
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 47.06
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align:
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4543424
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 52.94
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] %)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 4038300
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] alignments to 1 output stream(s)
+    command finished
+  * executing "/mnt/work/bowtie*/bowtie --sam --al --best --solexa-quals  -q mm9 /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006825.fastq > /mnt/data/MEF_H3K27me3_ChIPSeq/SRR006825.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads processed: 7610718
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads with at least one reported alignment: 4206841 (
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 55.28%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] # reads that failed to align: 3403877 (44.72%)
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Reported 4206841 alignments to 1 output stream(s)
+    command finished
+  * executing `to_bam'
+    triggering before callbacks for `to_bam'
+  * executing `EC2:start'
+I, [2010-10-18T21:23:18.169389 #8283]  INFO -- : New RightAws::Ec2 using shared connections mode
+I, [2010-10-18T21:23:18.171882 #8283]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+W, [2010-10-18T21:23:18.305275 #8283]  WARN -- : ##### RightAws::Ec2 returned an error: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?>
+<Response><Errors><Error><Code>InvalidGroup.Duplicate</Code><Message>The security group 'CaTPAWS_mef_h3k4me3_mikkelsen_mef' already exists</Message></Error></Errors><RequestID>4cd68be3-719a-470e-a35e-bcc924c6a601</RequestID></Response> #####
+W, [2010-10-18T21:23:18.305376 #8283]  WARN -- : ##### RightAws::Ec2 request: https://eu-west-1.ec2.amazonaws.com:443/?AWSAccessKeyId=16F5AHH5HWR243WSNMR2&Action=CreateSecurityGroup&GroupDescription=A%20group%20created%20by%20CaTPAWS%20%28http%3A%2F%2Fgithub.com%2Fcassj%2Fcatpaws%29&GroupName=CaTPAWS_mef_h3k4me3_mikkelsen_mef&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2010-10-18T20%3A23%3A18.000Z&Version=2010-08-31&Signature=j11apybQNCoqVR9W9LqnkOZs5USYnpVqGUdK2x2saGA%3D ####
+    triggering after callbacks for `EC2:start'
+  * executing `EC2:setup'
+  * executing "sudo -p 'sudo password: ' mkdir -p /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "sudo -p 'sudo password: ' chown -R ubuntu /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "wget -O /mnt/work/mm9_lengths  'http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths'"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] --2010-10-18 20:23:24--  http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Resolving github.com...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 207.97.227.239
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Connecting to github.com|207.97.227.239|:80...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] connected.
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] HTTP request sent, awaiting response...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 200 OK
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Length: 331 [text/plain]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Saving to: `/mnt/work/mm9_lengths'
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 0K
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 100%
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 42.1M=0s
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 2010-10-18 20:23:24 (42.1 MB/s) - `/mnt/work/mm9_lengths' saved [331/331]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "ls /mnt/data/MEF_H3K4me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K27me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006799.bam /mnt/work/SRR006799.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006835.bam /mnt/work/SRR006835.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006836.bam /mnt/work/SRR006836.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006837.bam /mnt/work/SRR006837.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006838.bam /mnt/work/SRR006838.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006797.bam /mnt/work/SRR006797.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006822.bam /mnt/work/SRR006822.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006823.bam /mnt/work/SRR006823.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006824.bam /mnt/work/SRR006824.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/SRR006825.bam /mnt/work/SRR006825.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing `to_bam'
+    triggering before callbacks for `to_bam'
+  * executing `EC2:start'
+I, [2010-10-18T21:24:21.641070 #8383]  INFO -- : New RightAws::Ec2 using shared connections mode
+I, [2010-10-18T21:24:21.643402 #8383]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+W, [2010-10-18T21:24:21.773968 #8383]  WARN -- : ##### RightAws::Ec2 returned an error: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?>
+<Response><Errors><Error><Code>InvalidGroup.Duplicate</Code><Message>The security group 'CaTPAWS_mef_h3k4me3_mikkelsen_mef' already exists</Message></Error></Errors><RequestID>7f83f8aa-bdd7-43c0-af9f-c21ff1f20fad</RequestID></Response> #####
+W, [2010-10-18T21:24:21.774068 #8383]  WARN -- : ##### RightAws::Ec2 request: https://eu-west-1.ec2.amazonaws.com:443/?AWSAccessKeyId=16F5AHH5HWR243WSNMR2&Action=CreateSecurityGroup&GroupDescription=A%20group%20created%20by%20CaTPAWS%20%28http%3A%2F%2Fgithub.com%2Fcassj%2Fcatpaws%29&GroupName=CaTPAWS_mef_h3k4me3_mikkelsen_mef&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2010-10-18T20%3A24%3A21.000Z&Version=2010-08-31&Signature=RlnUf0Ff76UWFDsNhStfWDVxBwa%2Fqqy4lvi5g8clC%2FQ%3D ####
+    triggering after callbacks for `EC2:start'
+  * executing `EC2:setup'
+  * executing "sudo -p 'sudo password: ' mkdir -p /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "sudo -p 'sudo password: ' chown -R ubuntu /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "wget -O /mnt/work/mm9_lengths  'http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths'"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] --2010-10-18 20:24:27--  http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Resolving github.com...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 207.97.227.239
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Connecting to github.com|207.97.227.239|:80...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] connected.
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] HTTP request sent, awaiting response...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 200 OK
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Length: 331 [text/plain]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Saving to: `/mnt/work/mm9_lengths'
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 0K
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 100%
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 48.8M=0s
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 2010-10-18 20:24:28 (48.8 MB/s) - `/mnt/work/mm9_lengths' saved [331/331]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "ls /mnt/data/MEF_H3K4me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K27me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006799.bam /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006799.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006835.bam /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006835.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006836.bam /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006836.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006837.bam /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006837.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006838.bam /mnt/work/MEF_H3K4me3_ChIPSeq/SRR006838.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006797.bam /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006797.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006822.bam /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006822.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006823.bam /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006823.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006824.bam /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006824.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006825.bam /mnt/work/MEF_H3K27me3_ChIPSeq/SRR006825.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [main_samview] fail to open file for reading.
+    command finished
+  * executing `to_bam'
+    triggering before callbacks for `to_bam'
+  * executing `EC2:start'
+I, [2010-10-18T21:26:48.311641 #8495]  INFO -- : New RightAws::Ec2 using shared connections mode
+I, [2010-10-18T21:26:48.313349 #8495]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+W, [2010-10-18T21:26:48.439841 #8495]  WARN -- : ##### RightAws::Ec2 returned an error: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?>
+<Response><Errors><Error><Code>InvalidGroup.Duplicate</Code><Message>The security group 'CaTPAWS_mef_h3k4me3_mikkelsen_mef' already exists</Message></Error></Errors><RequestID>8653897b-f1e4-43d6-a09d-07063af3f229</RequestID></Response> #####
+W, [2010-10-18T21:26:48.439946 #8495]  WARN -- : ##### RightAws::Ec2 request: https://eu-west-1.ec2.amazonaws.com:443/?AWSAccessKeyId=16F5AHH5HWR243WSNMR2&Action=CreateSecurityGroup&GroupDescription=A%20group%20created%20by%20CaTPAWS%20%28http%3A%2F%2Fgithub.com%2Fcassj%2Fcatpaws%29&GroupName=CaTPAWS_mef_h3k4me3_mikkelsen_mef&SignatureMethod=HmacSHA256&SignatureVersion=2&Timestamp=2010-10-18T20%3A26%3A48.000Z&Version=2010-08-31&Signature=nKuG3c3oRxcKrGj5yZCXg0lMA4Kyu2wpfPwKweuVDWI%3D ####
+I, [2010-10-18T21:26:48.448845 #8495]  INFO -- : Closing HTTPS connection to eu-west-1.ec2.amazonaws.com:443, reason: 'RightAws::AWSErrorHandler: code: 400: 'Bad Request', probability: 10%'
+I, [2010-10-18T21:26:48.449921 #8495]  INFO -- : Opening new HTTPS connection to eu-west-1.ec2.amazonaws.com:443
+    triggering after callbacks for `EC2:start'
+  * executing `EC2:setup'
+  * executing "sudo -p 'sudo password: ' mkdir -p /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "sudo -p 'sudo password: ' chown -R ubuntu /mnt/work"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "wget -O /mnt/work/mm9_lengths  'http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths'"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] --2010-10-18 20:26:54--  http://github.com/cassj/my_bioinfo_scripts/raw/master/genomes/mm9_lengths
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Resolving github.com...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 207.97.227.239
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Connecting to github.com|207.97.227.239|:80...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] connected.
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] HTTP request sent, awaiting response...
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 200 OK
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Length: 331
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [text/plain]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] Saving to: `/mnt/work/mm9_lengths'
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 0K
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 100%
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 53.6M=0s
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 2010-10-18 20:26:54 (53.6 MB/s) - `/mnt/work/mm9_lengths' saved [331/331]
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] 
+    command finished
+  * executing "ls /mnt/data/MEF_H3K4me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "ls /mnt/data/MEF_H3K27me3_ChIPSeq"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.bam /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006799.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [samopen] SAM header is present: 22 sequences.
+    command finished
+  * executing "samtools view -bt /mnt/work/mm9_lengths -o /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.bam /mnt/data/MEF_H3K4me3_ChIPSeq/SRR006835.sam"
+    servers: ["ec2-79-125-99-139.eu-west-1.compute.amazonaws.com"]
+    [ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] executing command
+*** [err :: ec2-79-125-99-139.eu-west-1.compute.amazonaws.com] [samopen] SAM header is present: 22 sequences.
