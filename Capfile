@@ -152,56 +152,182 @@ task :to_bam, :roles => group_name do
 end
 before "to_bam", "EC2:start"
 
-#I am here
 
 desc "sort bam"
 task :sort_bam, :roles => group_name do
-  run "samtools sort #{working_dir}/export.bam #{working_dir}/export_sorted"
+  k4 = capture "ls #{mount_point}/MEF_H3K4me3_ChIPSeq"
+  k4 = k4.split("\n").select{|f| f.match(/\.bam/)}
+  k27 = capture "ls #{mount_point}/MEF_H3K27me3_ChIPSeq"
+  k27 = k27.split("\n").select{|f| f.match(/\.bam/)}
+  k4.each{|f| 
+    f_out = f.sub('.bam', '_sorted')
+    run "samtools sort #{mount_point}/MEF_H3K4me3_ChIPSeq/#{f}  #{mount_point}/MEF_H3K4me3_ChIPSeq/#{f_out}"
+  }
+  k27.each{|f| 
+    f_out = f.sub('.bam', '_sorted')
+    run "samtools sort #{mount_point}/MEF_H3K27me3_ChIPSeq/#{f}  #{mount_point}/MEF_H3K27me3_ChIPSeq/#{f_out}"
+  }
 end
 before "sort_bam", "EC2:start"
 
-#merge bam files here!
-
 desc "remove duplicates"
-task :rmdups, :roles => :chipseq do
-  run "samtools rmdup -s #{working_dir}/export_sorted.bam #{working_dir}/export_nodups.bam"
+task :rmdups, :roles => group_name do
+  k4 = capture "ls #{mount_point}/MEF_H3K4me3_ChIPSeq"
+  k4 = k4.split("\n").select{|f| f.match(/sorted\.bam/)}
+  k27 = capture "ls #{mount_point}/MEF_H3K27me3_ChIPSeq"
+  k27 = k27.split("\n").select{|f| f.match(/sorted\.bam/)}
+  k4.each{|f| 
+    f_out = f.sub('_sorted', '_sorted_nodups')
+    run  "cd #{mount_point}/MEF_H3K4me3_ChIPSeq && samtools rmdup -s #{f} #{f_out}"
+  }
+  k27.each{|f| 
+    f_out = f.sub('_sorted', '_sorted_nodups')
+    run "cd #{mount_point}/MEF_H3K27me3_ChIPSeq && samtools rmdup -s #{f} #{f_out}"
+  }
 end
 before "rmdups", "EC2:start"
 
+
+#may need to do this with picard samtools doesn't manage
+#header properly
+desc "merge bam"
+task :merge_bam, :roles => group_name do
+  k4 = capture "ls #{mount_point}/MEF_H3K4me3_ChIPSeq"
+  k4 = k4.split("\n").select{|f| f.match(/sorted_nodups\.bam/)}.join(" ")
+  k27 = capture "ls #{mount_point}/MEF_H3K27me3_ChIPSeq"
+  k27 = k27.split("\n").select{|f| f.match(/sorted_nodups\.bam/)}.join(" ")
+  
+  run "cd #{mount_point}/MEF_H3K4me3_ChIPSeq && samtools merge merged.bam #{k4}"
+  run "cd #{mount_point}/MEF_H3K27me3_ChIPSeq && samtools merge merged.bam #{k27}"
+end
+before "merge_bam", "EC2:start"
+
+
+
 desc "index bam files"
-task :index, :roles => :chipseq do
-  run "samtools index #{working_dir}/export_nodups.bam #{working_dir}/export_nodups.bai"
+task :index, :roles => group_name do
+
+  run "cd #{mount_point}/MEF_H3K4me3_ChIPSeq && samtools index merged.bam merged.bai"
+  run "cd #{mount_point}/MEF_H3K27me3_ChIPSeq && samtools index merged.bam merged.bai"
+
 end
 before "index", "EC2:start"
 
 
 
-desc "upload to s3"
-task "to_s3", :roles => :chipseq do
+desc "download bam files"
+task :get_bam, :roles => group_name do
+  `rm -Rf results/alignment/bowtie` #remove previous results
+  `mkdir -p results/alignment/bowtie`
+  dirs = capture "ls #{mount_point}"
+  dirs = dirs.split("\n")
+  dirs.each {|d|
+    `mkdir -p results/alignment/bowtie/#{d}`
+    files = capture "ls #{mount_point}/#{d}"
+    files = files.split("\n").select{|f| f.match(/merged/)}
+    files.each{|f|
+      download( "#{mount_point}/#{d}/#{f}", "results/alignment/bowtie/#{d}/#{f}")
+    }
+  }
+end
+before "get_bam", 'EC2:start'
 
-  servers = find_servers_for_task(current_task)
-  puts servers
-  it = 0..(servers.length - 1)
-  it.each do |i|
-    host = servers[i]
-    bucket = bucket_names[i]
-    object = object_names[i]
-    bucket = "bam."+bucket
-    run("s3cmd mb s3://#{bucket}", :hosts => host)
-    run("s3cmd put #{working_dir}/export.bam s3://#{bucket}", :hosts => host)
-    run("s3cmd put #{working_dir}/export_sorted.bam s3://#{bucket}", :hosts => host)
-    run("s3cmd put #{working_dir}/export_nodups.bam s3://#{bucket}", :hosts => host)
-    run("s3cmd put #{working_dir}/export_nodups.bai s3://#{bucket}", :hosts => host)
-  end
+### Macs ?
+
+macs_url ="http://liulab.dfci.harvard.edu/MACS/src/MACS-1.4.0beta.tar.gz"
+macs_version = "MACS-1.4.0beta"
+
+task :install_macs, :roles => group_name do
+  sudo "apt-get install -y python"
+  run "cd #{working_dir} && wget --http-user macs --http-passwd chipseq #{macs_url}"
+  run "cd #{working_dir} && tar -xvzf #{macs_version}.tar.gz"
+  run "cd #{working_dir}/#{macs_version} && sudo python setup.py install"
+  sudo "ln -s /usr/local/bin/macs* /usr/local/bin/macs"
+end
+before "install_macs", 'EC2:start'
+
+task :install_peaksplitter, :roles => group_name do
+  url ='http://www.ebi.ac.uk/bertone/software/PeakSplitter_Cpp_1.0.tar.gz'
+  filename = 'PeakSplitter_Cpp_1.0.tar.gz'
+  bin = 'PeakSplitter_Cpp/PeakSplitter_Linux64/PeakSplitter'
+  run "cd #{working_dir} && curl #{url} > #{filename}"
+  run "cd #{working_dir} && tar -xvzf #{filename}"
+  run "sudo cp #{working_dir}/#{bin} /usr/local/bin/PeakSplitter"
+end 
+before 'install_peaksplitter', 'EC2:start'
+
+#you'll need to have done "install_r" and install_peak_splitter to do this
+task :run_macs, :roles => group_name do
+  
+#  treatments = ["MEF_H3K27me3_ChIPSeq",
+#               "MEF_H3K4me3_ChIPSeq"]
+  treatments = ["MEF_H3K27me3_ChIPSeq"]
+
+  control = "#{mount_point}/MEF_WCE_ChIPSeq/merged.bam"
+  genome = 'mm'
+  bws = [300]
+  pvalues = [0.00001]
+
+  #unsure what p values and bandwidths are appropriate, try a few.
+  treatments.each{|t|
+    treatment = "#{mount_point}/#{t}/merged.bam"
+    bws.each {|bw|
+      pvalues.each { |pvalue|
+        
+        name = "#{t}"
+        dir = "#{mount_point}/macs_#{bw}_#{pvalue}_#{t}"
+        run "rm -Rf #{dir}"
+        run "mkdir #{dir}"
+        
+        macs_cmd =  "macs --treatment #{treatment} --control #{control} --name #{name} --format BAM --gsize #{genome} --bw #{bw} --pvalue #{pvalue}"
+        run "cd #{dir} && #{macs_cmd}"
+        
+        dir = "#{mount_point}/macs_#{bw}_#{pvalue}_#{t}_subpeaks"
+        run "rm -Rf #{dir}"
+        run "mkdir #{dir}"
+        
+        # With SubPeak finding
+        # this will take a lot longer as you have to save the wig file 
+        macs_cmd =  "macs --treatment #{treatment} --control #{control} --name #{group_name} --format BAM --gsize #{genome} --call-subpeaks  --bw #{bw} --pvalue #{pvalue} --wig"
+        run "cd #{dir} && #{macs_cmd}"
+        
+      }
+    }
+  }
+  
+end
+before 'run_macs', 'EC2:start'
+
+
+
+#pack up the runs and downloads them to the server (without the wig files)
+task :pack_macs, :roles => group_name do
+  macs_dirs = capture "ls #{mount_point}"
+  macs_dirs = macs_dirs.split("\n").select {|f| f.match(/.*macs.*/)}
+  macs_dirs.each{|d|
+    run "cd #{mount_point} &&  tar --exclude *_wiggle* -cvzf #{d}.tgz #{d}"
+  }
+  
+end
+before 'pack_macs','EC2:start' 
+
+task :get_macs, :roles => group_name do
+  macs_files = capture "ls #{mount_point}"
+  macs_files = macs_files.split("\n").select {|f| f.match(/.*macs.*\.tgz/)}
+  res_dir = 'results/alignment/bowtie/peakfinding/macs'
+  `rm -Rf #{res_dir}`
+  `mkdir -p #{res_dir}`
+  macs_files.each{|f| 
+    download("#{mount_point}/#{f}", "#{res_dir}/#{f}") 
+    `cd #{res_dir} && tar -xvzf #{f}`
+  }
 
 end
-before "to_s3", "EC2:start"
+before 'get_macs', 'EC2:start'
 
 
 
 
-
-#if you want to keep the results
 
 #cap EBS:snapshot
 
